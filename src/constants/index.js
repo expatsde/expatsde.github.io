@@ -195,42 +195,41 @@ export const collabApps = [
 
 export const pricing = [
   {
-    id: "0",
-    title: "Basic",
-    description: "AI chatbot, personalized recommendations",
-    price: "99",
-    features: [
+    "id": "0",
+    "title": "Basic",
+    "description": "Get essential support for your move to Germany, including visa application and financial account assistance.",
+    "price": "99",
+    "features": [
       "🛂 Assistance with the visa application process for Germany.",
-      "💳 Assistance with Blocked accounts, Bank accounts , Health insurance",
-    ],
+      "💳 Assistance with Blocked accounts, Bank accounts, Health insurance."
+    ]
   },
   {
-    id: "1",
-    title: "Premium",
-    description: "Advanced AI chatbot, priority support, analytics dashboard",
-    price: "149",
-    features: [
+    "id": "1",
+    "title": "Premium",
+    "description": "Enhanced relocation support with added benefits such as city registration and residence permit assistance.",
+    "price": "149",
+    "features": [
       "🛂 Assistance with the visa application process for Germany.",
       "💳 Assistance with Blocked accounts, Bank accounts",
       "🏙️ Support with city registration upon arrival in Germany.",
       "📝 Assistance with the residence permit procedure upon arrival in Germany."
-    ],
+    ]
   },
   {
-    id: "2",
-    title: "Enterprise",
-    description: "Custom AI chatbot, advanced analytics, dedicated account",
-    price: 199,
-    features: [
+    "id": "2",
+    "title": "Enterprise",
+    "description": "Comprehensive relocation package with end-to-end support, from housing to local integration for your first 3 months in Germany.",
+    "price": "199",
+    "features": [
       "🏠 Apartment allocation and support",
       "🤝 Buddy program upon arrival and support regarding everything for the first 3 months in Germany",
       "🏙️ Support with city registration upon arrival in Germany.",
       "📝 Assistance with the residence permit procedure upon arrival in Germany.",
       "🛂 Assistance with the visa application process for Germany.",
-      "💳 Assistance with Blocked accounts, Bank accounts",
-    ],
-  }
-
+      "💳 Assistance with Blocked accounts, Bank accounts"
+    ]
+  }  
 ];
 
 export const benefits = [
