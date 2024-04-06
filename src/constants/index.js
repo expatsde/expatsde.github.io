@@ -40,7 +40,7 @@ export const navigation = [
   {
     id: "0",
     title: "Life In Germany",
-    url: "#features",
+    url: "https://mousy-relation-39a.notion.site/Life-In-Germany-b24781e2b4cd41ffb0f160879c2a3863?pvs=4",
   },
   {
     id: "1",
