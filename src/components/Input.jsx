@@ -56,18 +56,6 @@ export default function InputForm() {
     <Container>
       <FormStyle>
         <div className="form-group">
-          <label htmlFor="name">
-            Your Name
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
-        </div>
-        <div className="form-group">
           <label htmlFor="email">
             First Name
             <input
