@@ -43,7 +43,7 @@ const FormStyle = styled.form`
     outline: none;
     border: none;
     padding: 1rem 4rem;
-    border-radius: 8px;
+  
     cursor: pointer;
  }
 `;
@@ -127,8 +127,8 @@ export default function InputForm() {
             />
           </label>
         </div>
-        <Button>
-            Send
+        <Button white>
+            Submit
           </Button>
       </FormStyle>
     </Container>
