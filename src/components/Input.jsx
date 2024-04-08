@@ -17,13 +17,13 @@ const FormStyle = styled.form`
     margin-bottom: 2rem;
  }
  label {
-    font-size: 1.8rem;
+    font-size: 1.8rem; // Adjusted based on your needs
  }
  input,
  textarea {
     width: 100%;
-    font-size: 2rem;
-    padding: 1.2rem;
+    font-size: 1.5rem; // Reduced font size
+    padding: 0.8rem; // Reduced padding
     color: var(--gray-1);
     background-color: var(--deep-dark);
     outline: none;
@@ -32,18 +32,17 @@ const FormStyle = styled.form`
     margin-top: 1rem;
  }
  textarea {
-    min-height: 250px;
+    min-height: 200px; // Reduced min-height
     resize: vertical;
  }
  button[type='submit'] {
     background-color: var(--gray-1);
     color: var(--black);
-    font-size: 2rem;
+    font-size: 1.5rem; // Adjusted based on your needs
     display: inline-block;
     outline: none;
     border: none;
-    padding: 1rem 4rem;
-  
+    padding: 0.8rem 3rem; // Adjusted padding
     cursor: pointer;
  }
 `;

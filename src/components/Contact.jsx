@@ -22,8 +22,8 @@ const FormStyle = styled.form`
  input,
  textarea {
     width: 100%;
-    font-size: 2rem;
-    padding: 1.2rem;
+    font-size: 1.5rem; // Reduced font size
+    padding: 0.8rem; // Reduced padding
     color: var(--gray-1);
     background-color: var(--deep-dark);
     outline: none;
@@ -32,7 +32,7 @@ const FormStyle = styled.form`
     margin-top: 1rem;
  }
  textarea {
-    min-height: 250px;
+    min-height: 200px; // Reduced min-height
     resize: vertical;
  }
  button[type='submit'] {
@@ -47,6 +47,7 @@ const FormStyle = styled.form`
     cursor: pointer;
  }
 `;
+
 
 export default function ContactForm() {
  const [name, setName] = useState('');
