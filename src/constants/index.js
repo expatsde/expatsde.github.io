@@ -50,7 +50,7 @@ export const navigation = [
   {
     id: "2",
     title: "Contact",
-    url: "#how-to-use",
+    url: "mailto:contact@jsmastery.pro",
   },
   {
     id: "3",
