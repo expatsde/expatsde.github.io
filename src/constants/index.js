@@ -198,7 +198,7 @@ export const pricing = [
     "id": "0",
     "title": "Basic",
     "description": "Get essential support for your move to Germany, including visa application and financial account assistance.",
-    "price": "99",
+    "price": "9,999",
     "features": [
       "🛂 Assistance with the visa application process for Germany.",
       "💳 Assistance with Blocked accounts, Bank accounts, Health insurance."
@@ -208,7 +208,7 @@ export const pricing = [
     "id": "1",
     "title": "Premium",
     "description": "Enhanced relocation support with added benefits such as city registration and residence permit assistance.",
-    "price": "149",
+    "price": "14,999",
     "features": [
       "🛂 Assistance with the visa application process for Germany.",
       "💳 Assistance with Blocked accounts, Bank accounts",
@@ -220,7 +220,7 @@ export const pricing = [
     "id": "2",
     "title": "Enterprise",
     "description": "Comprehensive relocation package with end-to-end support, from housing to local integration for your first 3 months in Germany.",
-    "price": "199",
+    "price": "19,999",
     "features": [
       "🏠 Apartment allocation and support",
       "🤝 Buddy program upon arrival and support regarding everything for the first 3 months in Germany",
