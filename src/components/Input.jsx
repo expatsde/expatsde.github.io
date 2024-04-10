@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
+import { useParams } from "react-router-dom";
 
 const Container = styled.div`
   max-width: 600px;
@@ -63,6 +64,7 @@ export default function InputForm() {
     nationality: "",
   });
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  const { title } = useParams(); // Get the title from route params
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -72,7 +74,8 @@ export default function InputForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setShowSuccessAlert(true); // Show the success alert
-    console.log(formData); // Log formData to the console
+    console.log("Title:", title); // Log the title
+    console.log("FormData:", formData); // Log formData to the console
 
     // Reset form fields after 5 seconds
     setTimeout(() => {

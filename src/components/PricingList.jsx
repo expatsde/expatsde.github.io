@@ -5,9 +5,10 @@ import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 
 const PricingList = (updateShowform) => {
-  const handleClick = () => {
-    console.log("Button clicked");
-    navigate("/form");
+  const [selecteditem, setSelecteditem] = useState("");
+
+  const handleClick = (item) => {
+    navigate(`/form/${item.title}`);
   };
   const navigate = useNavigate();
   return (
@@ -37,7 +38,7 @@ const PricingList = (updateShowform) => {
           <Button
             className="w-full mb-6"
             white={!!item.price}
-            onClick={handleClick}
+            onClick={() => handleClick(item)}
           >
             {item.price ? "Get started" : "Contact us"}
           </Button>

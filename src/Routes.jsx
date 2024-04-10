@@ -18,7 +18,7 @@ const routes = [
     component: Hero,
   },
   {
-    path: "/form",
+    path: "/form/:title",
     exact: true,
     layout: MainLayout,
     component: InputForm,
