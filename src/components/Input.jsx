@@ -77,29 +77,30 @@ export default function InputForm() {
  };
 
  const handleSubmit = (event) => {
-    event.preventDefault();
-    emailjs
-      .sendForm('service_jegiket', 'template_sqoq94t', form.current, 'Lp_SaMa94FhyIMye8')
-      .then(
-        () => {
-          console.log('SUCCESS!');
-          setShowSuccessAlert(true);
-          setTimeout(() => {
-            setFormData({
-              firstName: "",
-              lastName: "",
-              email: "",
-              phoneNumber: "",
-              nationality: "",
-              title: "", // Reset title field
-            });
-            setShowSuccessAlert(false); // Hide the success alert
-          }, 5000);
-        },
-        (error) => {
-          console.log('FAILED...', error.text);
-        },
-      );
+  event.preventDefault();
+  console.log('Form data before submission:', formData); // Log form data to check if title is included
+  emailjs
+     .sendForm('service_jegiket', 'template_sqoq94t', form.current, 'Lp_SaMa94FhyIMye8')
+     .then(
+       () => {
+         console.log('SUCCESS!');
+         setShowSuccessAlert(true);
+         setTimeout(() => {
+           setFormData({
+             firstName: "",
+             lastName: "",
+             email: "",
+             phoneNumber: "",
+             nationality: "",
+             title: "", // Reset title field
+           });
+           setShowSuccessAlert(false); // Hide the success alert
+         }, 5000);
+       },
+       (error) => {
+         console.log('FAILED...', error.text);
+       },
+     );
  };
 
  return (
