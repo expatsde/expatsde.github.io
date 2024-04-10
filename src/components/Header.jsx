@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
 import { brainwave } from "../assets";
 import { navigation } from "../constants";
@@ -10,6 +10,7 @@ import { useState } from "react";
 const Header = () => {
   const pathname = useLocation();
   const [openNavigation, setOpenNavigation] = useState(false);
+  const navigate = useNavigate();
 
   const toggleNavigation = () => {
     if (openNavigation) {
@@ -21,9 +22,8 @@ const Header = () => {
     }
   };
 
-  const handleClick = () => {
-    if (!openNavigation) return;
-
+  const handleClick = (item) => {
+    navigate(item.url);
     enablePageScroll();
     setOpenNavigation(false);
   };
@@ -48,8 +48,7 @@ const Header = () => {
             {navigation.map((item) => (
               <a
                 key={item.id}
-                href={item.url}
-                onClick={handleClick}
+                onClick={() => handleClick(item)}
                 className={`block relative font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1 ${
                   item.onlyMobile ? "lg:hidden" : ""
                 } px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold ${
@@ -65,7 +64,7 @@ const Header = () => {
 
           <HamburgerMenu />
         </nav>
-        
+
         <Button
           className="ml-auto lg:hidden"
           px="px-3"

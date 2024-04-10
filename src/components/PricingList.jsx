@@ -1,8 +1,15 @@
+import React, { useState } from "react";
 import { check } from "../assets";
 import { pricing } from "../constants";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
-const PricingList = () => {
+const PricingList = (updateShowform) => {
+  const handleClick = () => {
+    console.log("Button clicked");
+    navigate("/form");
+  };
+  const navigate = useNavigate();
   return (
     <div className="flex gap-[1rem] max-lg:flex-wrap">
       {pricing.map((item) => (
@@ -29,8 +36,8 @@ const PricingList = () => {
 
           <Button
             className="w-full mb-6"
-            href={item.price ? "/pricing" : "mailto:expatsde@gmail.com"}
             white={!!item.price}
+            onClick={handleClick}
           >
             {item.price ? "Get started" : "Contact us"}
           </Button>
