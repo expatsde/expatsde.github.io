@@ -2,6 +2,7 @@ import MainLayout from "./layout/MainLayout";
 import InputForm from "./components/Input";
 import Pricing from "./components/Pricing";
 import Dashboard from "./components/Dashboard";
+import Hero from "./components/Hero";
 
 const routes = [
   //   {
@@ -14,7 +15,7 @@ const routes = [
     path: "/",
     exact: true,
     layout: MainLayout,
-    component: Dashboard,
+    component: Hero,
   },
   {
     path: "/form",
