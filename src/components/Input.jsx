@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import Button from "./Button";
 import { useParams } from "react-router-dom";
+import emailjs from '@emailjs/browser';
 
 const Container = styled.div`
   max-width: 600px;
@@ -55,44 +56,55 @@ const SuccessAlert = styled.div`
   margin-top: 1rem;
 `;
 
+
+
 export default function InputForm() {
-  const { title } = useParams();
-  const [formData, setFormData] = useState({
+ const { title } = useParams();
+ const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phoneNumber: "",
     nationality: "",
     title: title,
-  });
-  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+ });
+ const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+ const form = useRef();
 
-  const handleChange = (e) => {
+ const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-  };
+ };
 
-  const handleSubmit = (event) => {
+ const handleSubmit = (event) => {
     event.preventDefault();
-    setShowSuccessAlert(true);
+    emailjs
+      .sendForm('service_jegiket', 'template_sqoq94t', form.current, 'Lp_SaMa94FhyIMye8')
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          setShowSuccessAlert(true);
+          setTimeout(() => {
+            setFormData({
+              firstName: "",
+              lastName: "",
+              email: "",
+              phoneNumber: "",
+              nationality: "",
+              title: "", // Reset title field
+            });
+            setShowSuccessAlert(false); // Hide the success alert
+          }, 5000);
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+ };
 
-    console.log("FormData:", formData);
-
-    setTimeout(() => {
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phoneNumber: "",
-        nationality: "",
-        title: "", // Reset title field
-      });
-      setShowSuccessAlert(false); // Hide the success alert
-    }, 5000);
-  };
-  return (
+ return (
     <Container>
-      <FormStyle onSubmit={handleSubmit}>
+      <FormStyle ref={form} onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="firstName">
             First Name
@@ -161,5 +173,5 @@ export default function InputForm() {
         <SuccessAlert>Form submitted successfully!</SuccessAlert>
       )}
     </Container>
-  );
+ );
 }
