@@ -56,15 +56,16 @@ const SuccessAlert = styled.div`
 `;
 
 export default function InputForm() {
+  const { title } = useParams();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phoneNumber: "",
     nationality: "",
+    title: title,
   });
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
-  const { title } = useParams(); // Get the title from route params
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -73,11 +74,10 @@ export default function InputForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setShowSuccessAlert(true); // Show the success alert
-    console.log("Title:", title); // Log the title
-    console.log("FormData:", formData); // Log formData to the console
+    setShowSuccessAlert(true);
 
-    // Reset form fields after 5 seconds
+    console.log("FormData:", formData);
+
     setTimeout(() => {
       setFormData({
         firstName: "",
@@ -85,6 +85,7 @@ export default function InputForm() {
         email: "",
         phoneNumber: "",
         nationality: "",
+        title: "", // Reset title field
       });
       setShowSuccessAlert(false); // Hide the success alert
     }, 5000);
