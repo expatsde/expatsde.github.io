@@ -23,9 +23,16 @@ const Header = () => {
   };
 
   const handleClick = (item) => {
-    navigate(item.url);
-    enablePageScroll();
-    setOpenNavigation(false);
+    if (item.title == "Life In Germany") {
+      window.open(
+        "https://mousy-relation-39a.notion.site/Life-In-Germany-b24781e2b4cd41ffb0f160879c2a3863?pvs=4",
+        "_blank"
+      );
+    } else {
+      navigate(item.url);
+      enablePageScroll();
+      setOpenNavigation(false);
+    }
   };
 
   return (

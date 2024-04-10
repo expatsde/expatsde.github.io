@@ -13,6 +13,13 @@ import Pricing from "./Pricing";
 const Hero = () => {
   const parallaxRef = useRef(null);
 
+  const openLifeInGermany = () => {
+    window.open(
+      "https://mousy-relation-39a.notion.site/Life-In-Germany-b24781e2b4cd41ffb0f160879c2a3863?pvs=4",
+      "_blank"
+    );
+  };
+
   return (
     <Section
       className="pt-[12rem] -mt-[5.25rem]"
@@ -40,10 +47,7 @@ const Hero = () => {
             We Facilitates Smooth Relocation to Germany, Ensuring a Seamless
             Transition for Individuals. 🛫 🏡
           </p>
-          <Button
-            href="https://mousy-relation-39a.notion.site/Life-In-Germany-b24781e2b4cd41ffb0f160879c2a3863?pvs=4"
-            white
-          >
+          <Button white onClick={openLifeInGermany}>
             Life in Germany
           </Button>
         </div>
