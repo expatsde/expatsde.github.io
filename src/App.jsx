@@ -6,7 +6,7 @@ import Layout from "./layout/MainLayout";
 
 function App() {
   useEffect(() => {
-    document.title = "MIRA";
+    document.title = "ExpatsDE";
     window.scrollTo(0, 0);
   }, []);
 
