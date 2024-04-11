@@ -5,23 +5,23 @@ import { useParams } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 
 const Container = styled.div`
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 2rem;
+ max-width: 600px;
+ margin: 0 auto;
+ padding: 2rem;
 `;
 
 const FormStyle = styled.form`
-  width: 100%;
-  max-width: 100%;
-  .form-group {
+ width: 100%;
+ max-width: 100%;
+ .form-group {
     width: 100%;
     margin-bottom: 2rem;
-  }
-  label {
+ }
+ label {
     font-size: 1.8rem;
-  }
-  input,
-  textarea {
+ }
+ input,
+ textarea {
     width: 100%;
     font-size: 1.5rem;
     padding: 0.8rem;
@@ -31,12 +31,12 @@ const FormStyle = styled.form`
     border: 1px solid white;
     border-radius: 8px;
     margin-top: 1rem;
-  }
-  textarea {
+ }
+ textarea {
     min-height: 200px;
     resize: vertical;
-  }
-  button[type="submit"] {
+ }
+ button[type="submit"] {
     background-color: var(--gray-1);
     color: var(--black);
     font-size: 1.5rem;
@@ -45,38 +45,38 @@ const FormStyle = styled.form`
     border: none;
     padding: 0.8rem 3rem;
     cursor: pointer;
-  }
+ }
 `;
 
 const SuccessAlert = styled.div`
-  background-color: green;
-  color: white;
-  padding: 1rem;
-  border-radius: 8px;
-  margin-top: 1rem;
+ background-color: green;
+ color: white;
+ padding: 1rem;
+ border-radius: 8px;
+ margin-top: 1rem;
 `;
 
 export default function InputForm() {
-  const { title } = useParams();
-  const [formData, setFormData] = useState({
+ const { title } = useParams();
+ const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phoneNumber: "",
     nationality: "",
     title: title,
-  });
-  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
-  const form = useRef();
+ });
+ const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+ const form = useRef();
 
-  const handleChange = (e) => {
+ const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-  };
+ };
 
-  const handleSubmit = (event) => {
+ const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Form data before submission:", formData); // Log form data to check if title is included
+    console.log("Form data before submission:", formData);
     emailjs
       .sendForm(
         "service_jegiket",
@@ -95,18 +95,18 @@ export default function InputForm() {
               email: "",
               phoneNumber: "",
               nationality: "",
-              title: "", // Reset title field
+              title: "",
             });
-            setShowSuccessAlert(false); // Hide the success alert
+            setShowSuccessAlert(false);
           }, 5000);
         },
         (error) => {
           console.log("FAILED...", error.text);
         }
       );
-  };
+ };
 
-  return (
+ return (
     <Container>
       <FormStyle ref={form} onSubmit={handleSubmit}>
         <div className="form-group">
@@ -118,6 +118,7 @@ export default function InputForm() {
               name="firstName"
               value={formData.firstName}
               onChange={handleChange}
+              required
             />
           </label>
         </div>
@@ -142,6 +143,8 @@ export default function InputForm() {
               name="email"
               value={formData.email}
               onChange={handleChange}
+              required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             />
           </label>
         </div>
@@ -154,6 +157,8 @@ export default function InputForm() {
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleChange}
+              required
+              pattern="\d{10}"
             />
           </label>
         </div>
@@ -182,8 +187,8 @@ export default function InputForm() {
         </Button>
       </FormStyle>
       {showSuccessAlert && (
-        <SuccessAlert>Form submitted successfully!</SuccessAlert>
+        <SuccessAlert>"Please hold tight and relax 😊, we'll be in touch within 24 hours! 🕒"</SuccessAlert>
       )}
     </Container>
-  );
+ );
 }
