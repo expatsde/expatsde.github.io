@@ -9,52 +9,44 @@ const Container = styled.div`
  margin: 0 auto;
  padding: 2rem;
 `;
-
 const FormStyle = styled.form`
  width: 100%;
  max-width: 100%;
  .form-group {
     width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem; // Reduced margin-bottom
  }
  label {
-    font-size: 1.8rem;
+    font-size: 1.4rem; // Reduced font size
  }
  input,
  textarea {
     width: 100%;
-    font-size: 1.5rem;
-    padding: 0.8rem;
+    font-size: 1.2rem; // Reduced font size
+    padding: 0.6rem; // Reduced padding
     color: var(--gray-1);
     background-color: var(--deep-dark);
     outline: none;
     border: 1px solid white;
     border-radius: 8px;
-    margin-top: 1rem;
+    margin-top: 0.5rem; // Reduced margin-top
  }
  textarea {
-    min-height: 200px;
+    min-height: 150px; // Reduced min-height
     resize: vertical;
  }
  button[type="submit"] {
     background-color: var(--gray-1);
     color: var(--black);
-    font-size: 1.5rem;
+    font-size: 1.2rem; // Reduced font size
     display: inline-block;
     outline: none;
     border: none;
-    padding: 0.8rem 3rem;
+    padding: 0.6rem 2rem; // Reduced padding
     cursor: pointer;
  }
 `;
 
-const SuccessAlert = styled.div`
- background-color: green;
- color: white;
- padding: 1rem;
- border-radius: 8px;
- margin-top: 1rem;
-`;
 
 export default function InputForm() {
  const { title } = useParams();
