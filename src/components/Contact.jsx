@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from "./Button";
-
+import emailjs from "@emailjs/browser";
 
 const Container = styled.div`
- max-width: 600px; // Adjust this value as needed
+ max-width: 600px;
  margin: 0 auto;
  padding: 2rem;
 `;
 
 const FormStyle = styled.form`
  width: 100%;
- max-width: 100%; // Ensures the form doesn't exceed the container's max-width
+ max-width: 100%;
  .form-group {
     width: 100%;
     margin-bottom: 2rem;
@@ -22,8 +22,8 @@ const FormStyle = styled.form`
  input,
  textarea {
     width: 100%;
-    font-size: 1.5rem; // Reduced font size
-    padding: 0.8rem; // Reduced padding
+    font-size: 1.5rem;
+    padding: 0.8rem;
     color: var(--gray-1);
     background-color: var(--deep-dark);
     outline: none;
@@ -32,7 +32,7 @@ const FormStyle = styled.form`
     margin-top: 1rem;
  }
  textarea {
-    min-height: 200px; // Reduced min-height
+    min-height: 200px;
     resize: vertical;
  }
  button[type='submit'] {
@@ -48,14 +48,45 @@ const FormStyle = styled.form`
  }
 `;
 
-
 export default function ContactForm() {
  const [name, setName] = useState('');
  const [email, setEmail] = useState('');
  const [message, setMessage] = useState('');
+
+ const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+
+ const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const templateParams = {
+      name: name,
+      email: email,
+      message: message,
+    };
+
+    emailjs
+    .send(
+      "service_jegiket",
+      "template_vyx8zcy",
+      templateParams,
+      "Lp_SaMa94FhyIMye8"
+    )
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        setShowSuccessAlert(true);
+        // Clear the form
+        setName('');
+        setEmail('');
+        setMessage('');
+      }, (err) => {
+        console.log('FAILED...', err);
+        setShowSuccessAlert(false);
+      });
+ };
+
  return (
     <Container>
-      <FormStyle>
+      <FormStyle onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">
             Your Name
@@ -65,6 +96,7 @@ export default function ContactForm() {
               name="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              required
             />
           </label>
         </div>
@@ -77,6 +109,8 @@ export default function ContactForm() {
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             />
           </label>
         </div>
@@ -93,9 +127,14 @@ export default function ContactForm() {
           </label>
         </div>
         <Button type="submit" white>
-            Send
-          </Button>
+          Send
+        </Button>
       </FormStyle>
+      {showSuccessAlert && (
+        <showSuccessAlert>
+         📬 Got your query! We'll be in touch soon.
+        </showSuccessAlert>
+      )}
     </Container>
  );
 }
