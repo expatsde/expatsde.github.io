@@ -3,6 +3,7 @@ import InputForm from "./components/Input";
 import Pricing from "./components/Pricing";
 import Dashboard from "./components/Dashboard";
 import Hero from "./components/Hero";
+import ContactForm from "./components/Contact";
 
 const routes = [
   //   {
@@ -29,6 +30,12 @@ const routes = [
     layout: MainLayout,
     component: Pricing,
   },
+  {
+    path: "/Contact",
+    exact: true,
+    layout: MainLayout,
+    component: ContactForm,
+  }
 ];
 
 export default routes;

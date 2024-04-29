@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Button from "./Button";
 import { useParams } from "react-router-dom";
 import emailjs from "@emailjs/browser";
+import PhoneInput from 'react-phone-number-input/input';
+
 
 const Container = styled.div`
  max-width: 600px;
@@ -67,36 +69,36 @@ export default function InputForm() {
  };
 
  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Form data before submission:", formData);
-    emailjs
-      .sendForm(
-        "service_jegiket",
-        "template_sqoq94t",
-        form.current,
-        "Lp_SaMa94FhyIMye8"
-      )
-      .then(
-        () => {
-          console.log("SUCCESS!");
-          setShowSuccessAlert(true);
-          setTimeout(() => {
-            setFormData({
-              firstName: "",
-              lastName: "",
-              email: "",
-              phoneNumber: "",
-              nationality: "",
-              title: "",
-            });
-            setShowSuccessAlert(false);
-          }, 5000);
-        },
-        (error) => {
-          console.log("FAILED...", error.text);
-        }
-      );
- };
+  event.preventDefault();
+  console.log("Form data before submission:", formData);
+  emailjs
+    .sendForm(
+      "service_jegiket",
+      "template_sqoq94t",
+      form.current,
+      "Lp_SaMa94FhyIMye8"
+    )
+    .then(
+      () => {
+        console.log("SUCCESS!");
+        setShowSuccessAlert(true);
+        setTimeout(() => {
+          setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phoneNumber: "",
+            nationality: "",
+            title: "",
+          });
+          setShowSuccessAlert(false);
+        }, 5000);
+      },
+      (error) => {
+        console.log("FAILED...", error.text);
+      }
+    );
+};
 
  return (
     <Container>
@@ -150,7 +152,8 @@ export default function InputForm() {
               value={formData.phoneNumber}
               onChange={handleChange}
               required
-              pattern="\d{10}"
+              international
+              withCountryCallingCode
             />
           </label>
         </div>
@@ -177,9 +180,11 @@ export default function InputForm() {
         <Button type="submit" white>
           Submit
         </Button>
-      </FormStyle>
+        </FormStyle>
       {showSuccessAlert && (
-        <SuccessAlert>"Please hold tight and relax 😊, we'll be in touch within 24 hours! 🕒"</SuccessAlert>
+        <showSuccessAlert>
+          Please hold tight and relax 😊, we'll be in touch within 24 hours! 🕒
+        </showSuccessAlert>
       )}
     </Container>
  );
