@@ -31,7 +31,7 @@ const routes = [
     component: Pricing,
   },
   {
-    path: "/Contact",
+    path: "/mailto:expatsde@gmail.com",
     exact: true,
     layout: MainLayout,
     component: ContactForm,

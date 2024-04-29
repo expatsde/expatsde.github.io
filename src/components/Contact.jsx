@@ -92,7 +92,7 @@ export default function ContactForm() {
             />
           </label>
         </div>
-        <Button>
+        <Button type="submit" white>
             Send
           </Button>
       </FormStyle>
